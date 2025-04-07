@@ -68,3 +68,29 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Webster Design
+
+**Bold & Beautiful Digital Windows**
+
+Webster Design is a creative web and advertising agency founded by Nathalie Benarroch — a multidisciplinary designer and creative director known for her poetic approach to strategy, storytelling, and digital design.
+
+We build impactful, elegant, and emotionally intelligent brand experiences, specializing in:
+
+- ✨ Web Design & Development
+- 🖋️ Branding & Visual Identity
+- 🎯 Advertising Campaigns
+- 📣 Communications & Content Strategy
+- 🎉 Event Creative & Installations
+
+Our debut site is a living canvas — featuring animated storytelling, poetic scrolls, and artfully rendered UI/UX, all powered by React, Tailwind CSS, and Framer Motion.
+
+## Launch the Dream
+
+Want to collaborate or create something bold and beautiful?  
+📬 [Contact us](mailto:nb26@me.com) or visit [websterdesign.com](https://websterdesign.com)
+
+---
+
+_“I used to dream about the stars…  
+Now, I connect them.”_
