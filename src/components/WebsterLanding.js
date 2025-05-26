@@ -1,6 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+// ⭐ Generate consistent star config shared between top and bottom
+const STAR_CONFIGS = Array.from({ length: 12 }).map(() => ({
+  delay: 6.5 + Math.random() * 2,
+  left: Math.random() * 100,
+  top: 72 + Math.random() * 192,
+}));
+
 // ⭐️ Floating Star Animation
 const Star = ({ delay, left, top }) => (
   <motion.svg
@@ -12,7 +19,7 @@ const Star = ({ delay, left, top }) => (
     strokeLinecap="round"
     strokeLinejoin="round"
     className="absolute w-6 h-6 z-20"
-    style={{ left, top }}
+    style={{ left: `${left}%`, top: `${top}px` }}
     initial={{ opacity: 0, y: -50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 2, delay }}
@@ -21,7 +28,6 @@ const Star = ({ delay, left, top }) => (
   </motion.svg>
 );
 
-// ☁️ Cloud sweep animation
 const CloudSweep = () => (
   <motion.img
     src="/images/clouds.png"
@@ -33,7 +39,6 @@ const CloudSweep = () => (
   />
 );
 
-// 💥 Logo + Sparkle Explosion (centered)
 const LogoExplosion = () => {
   const sparkles = Array.from({ length: 40 }, () => {
     const angle = Math.random() * 2 * Math.PI;
@@ -46,7 +51,6 @@ const LogoExplosion = () => {
 
   return (
     <div className="absolute top-[0.5in] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[50] w-72 h-40 flex items-center justify-center">
-      {/* 💎 Sparkles */}
       {sparkles.map((sparkle, i) => (
         <motion.img
           key={i}
@@ -67,8 +71,6 @@ const LogoExplosion = () => {
           }}
         />
       ))}
-
-      {/* 🌟 Logo */}
       <motion.div
         className="z-[55]"
         initial={{ x: 300, opacity: 0 }}
@@ -85,35 +87,50 @@ const LogoExplosion = () => {
   );
 };
 
+const ConnectingLine = ({ x1, y1, x2, y2, delay }) => (
+  <motion.svg
+    className="absolute z-10"
+    style={{ left: 0, top: 0 }}
+    width="100%"
+    height="100%"
+  >
+    <motion.line
+      x1={`${x1}%`}
+      y1={y1}
+      x2={`${x2}%`}
+      y2={y2}
+      stroke="black"
+      strokeDasharray="4"
+      strokeWidth="2"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay, duration: 0.6 }}
+    />
+  </motion.svg>
+);
+
 const WebsterLanding = () => {
   return (
     <div className="min-h-screen w-full relative font-sans overflow-hidden bg-white">
-      {/* 🌅 Background image */}
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-[1]"
         style={{ backgroundImage: "url('/images/sunlit.jpg')" }}
       ></div>
 
-      {/* ☁️ Cloud sweep */}
       <CloudSweep />
 
-      {/* ✨ Star clusters */}
-      {[6.5, 7.5, 8.5].map((baseDelay, groupIndex) =>
-        [...Array(4)].map((_, i) => (
-          <Star
-            key={`group${groupIndex}-${i}`}
-            delay={baseDelay + Math.random() * 0.5}
-            left={`${Math.random() * 100}%`}
-            top={`calc(0in + ${72 + Math.random() * 192}px)`}
-          />
-        ))
-      )}
+      {STAR_CONFIGS.map((star, i) => (
+        <Star
+          key={`top-star-${i}`}
+          delay={star.delay}
+          left={star.left}
+          top={star.top}
+        />
+      ))}
 
-      {/* 🌠 Logo + Sparkles (centered over entire screen) */}
       <LogoExplosion />
 
-      {/* 📝 Text Block — Left Aligned */}
-      <div className="relative z-[40] flex flex-col justify-start items-start min-h-screen px-8 pt-[65vh] text-left">
+      <div className="relative z-[40] flex flex-col justify-start items-start min-h-screen px-8 pt-[35vh] text-left">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -132,10 +149,53 @@ const WebsterLanding = () => {
           <motion.img
             src="/images/tree.png"
             alt="Tree"
-            className="w-24 h-auto"
+            className="w-64 h-auto -mt-[0.5in] scale-100"
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 10.7, duration: 1, ease: "easeOut" }}
+          />
+        </motion.div>
+
+        <div className="relative w-full h-64 -mt-16 z-[30]">
+          {STAR_CONFIGS.map((star, i) => (
+            <React.Fragment key={`bottom-star-${i}`}>
+              <Star delay={star.delay + 6} left={star.left} top={star.top} />
+              {i % 2 === 0 && i < STAR_CONFIGS.length - 1 && (
+                <ConnectingLine
+                  x1={star.left}
+                  y1={star.top}
+                  x2={STAR_CONFIGS[i + 1].left}
+                  y2={STAR_CONFIGS[i + 1].top}
+                  delay={star.delay + 6.3}
+                />
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 14.2, duration: 1.5, ease: "easeOut" }}
+          className="text-black p-6 max-w-md ml-auto text-right"
+        >
+          <motion.h2
+            className="text-xl md:text-3xl italic mb-4"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 14.2, duration: 1, ease: "easeOut" }}
+          >
+            Then I learned to connect the stars{" "}
+            <span className="not-italic">(with code)</span>
+          </motion.h2>
+
+          <motion.img
+            src="/images/tree.png"
+            alt="Tree"
+            className="w-64 h-auto -mt-[0.5in] ml-auto scale-[3]"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 16, duration: 1, ease: "easeOut" }}
           />
         </motion.div>
       </div>
