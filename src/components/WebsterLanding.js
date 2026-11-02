@@ -30,6 +30,19 @@ const HERO_STARS = Array.from({ length: HERO_STAR_COUNT }).flatMap((_, i) => {
   return [star, twin];
 });
 
+// ✦ Constellation lines for the bottom stars: walk the stars left to right,
+// joining each to its neighbour, plus a few cross links that make triangles.
+const ORDER = STAR_CONFIGS.map((s, i) => i).sort(
+  (a, b) => STAR_CONFIGS[a].left - STAR_CONFIGS[b].left
+);
+const STAR_LINKS = [
+  ...ORDER.slice(0, -1).map((a, k) => [a, ORDER[k + 1]]),
+  ...ORDER.filter((_, k) => k % 3 === 0 && k + 2 < ORDER.length).map((a) => [
+    a,
+    ORDER[ORDER.indexOf(a) + 2],
+  ]),
+];
+
 // ⭐️ Floating Star Animation
 const Star = ({ delay, left, top }) => (
   <motion.svg
@@ -41,7 +54,8 @@ const Star = ({ delay, left, top }) => (
     strokeLinecap="round"
     strokeLinejoin="round"
     className="absolute w-6 h-6 z-20"
-    style={{ left: `${left}%`, top: `${top}px` }}
+    // centered on its point, so connecting lines hit the middle of the star
+    style={{ left: `${left}%`, top: `${top}px`, marginLeft: -12, marginTop: -12 }}
     initial={{ opacity: 0, y: -50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 2, delay }}
@@ -109,28 +123,6 @@ const LogoExplosion = () => {
   );
 };
 
-const ConnectingLine = ({ x1, y1, x2, y2, delay }) => (
-  <motion.svg
-    className="absolute z-10"
-    style={{ left: 0, top: 0 }}
-    width="100%"
-    height="100%"
-  >
-    <motion.line
-      x1={`${x1}%`}
-      y1={y1}
-      x2={`${x2}%`}
-      y2={y2}
-      stroke="black"
-      strokeDasharray="4"
-      strokeWidth="2"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay, duration: 0.6 }}
-    />
-  </motion.svg>
-);
-
 const WebsterLanding = () => {
   return (
     <section id="top" className="min-h-screen w-full relative font-sans overflow-hidden bg-white">
@@ -179,19 +171,25 @@ const WebsterLanding = () => {
         </motion.div>
 
         <div className="relative w-full h-64 -mt-16 z-[30]">
+          <svg className="absolute inset-0 w-full h-full overflow-visible z-10" aria-hidden="true">
+            {STAR_LINKS.map(([a, b], i) => (
+              <motion.line
+                key={`link-${i}`}
+                x1={`${STAR_CONFIGS[a].left}%`}
+                y1={STAR_CONFIGS[a].top}
+                x2={`${STAR_CONFIGS[b].left}%`}
+                y2={STAR_CONFIGS[b].top}
+                stroke="black"
+                strokeWidth="2"
+                strokeDasharray="4 5"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ delay: 14.8 + i * 0.25, duration: 0.7, ease: "easeInOut" }}
+              />
+            ))}
+          </svg>
           {STAR_CONFIGS.map((star, i) => (
-            <React.Fragment key={`bottom-star-${i}`}>
-              <Star delay={star.delay + 6} left={star.left} top={star.top} />
-              {i % 2 === 0 && i < STAR_CONFIGS.length - 1 && (
-                <ConnectingLine
-                  x1={star.left}
-                  y1={star.top}
-                  x2={STAR_CONFIGS[i + 1].left}
-                  y2={STAR_CONFIGS[i + 1].top}
-                  delay={star.delay + 6.3}
-                />
-              )}
-            </React.Fragment>
+            <Star key={`bottom-star-${i}`} delay={star.delay + 6} left={star.left} top={star.top} />
           ))}
         </div>
 
