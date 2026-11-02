@@ -91,7 +91,7 @@ export const Nav = () => {
 
 /* ---------- MARQUEE ---------- */
 export const Marquee = () => {
-  const words = ["Websites that move", "Brand storytelling", "Rebrands", "Motion", "EN / FR copy", "Paris → Montréal"];
+  const words = ["Creators of bold & beautiful web windows", "Websites that move", "Brand storytelling", "Rebrands", "Motion", "EN / FR copy", "Paris → Montréal"];
   const row = [...words, ...words];
   return (
     <div className="bg-black text-white py-5 overflow-hidden border-t border-white/10" aria-hidden="true">
@@ -130,8 +130,8 @@ const CHAPTERS = [
 ];
 
 export const Story = () => (
-  <section id="story" className="relative bg-[#fafaf7] py-16 md:py-24 px-6 md:px-12 overflow-hidden">
-    <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-12">
+  <section id="story" className="relative bg-[#fafaf7] py-12 md:py-16 px-6 md:px-12 overflow-hidden">
+    <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-8">
       <div className="md:col-span-5 md:sticky md:top-32 self-start">
         <Reveal>
           <Eyebrow>The story</Eyebrow>
@@ -144,18 +144,18 @@ export const Story = () => (
           </p>
         </Reveal>
       </div>
-      <div className="md:col-span-7 space-y-6">
+      <div className="md:col-span-7 space-y-3">
         {CHAPTERS.map((c, i) => (
           <Reveal key={c.n} delay={i * 0.1}>
             <motion.article
               whileHover={{ x: 8 }}
-              className="group bg-white border border-black/10 rounded-3xl p-8 md:p-10 hover:border-webster transition-colors"
+              className="group bg-white border border-black/10 rounded-3xl p-6 md:p-7 hover:border-webster transition-colors"
             >
               <div className="flex items-baseline gap-5">
                 <span className="font-display text-webster text-2xl">{c.n}</span>
                 <h3 className="font-display text-3xl md:text-4xl italic">{c.title}</h3>
               </div>
-              <p className="mt-4 text-black/70 leading-relaxed text-lg">{c.text}</p>
+              <p className="mt-2 text-black/70 leading-relaxed">{c.text}</p>
             </motion.article>
           </Reveal>
         ))}
@@ -170,7 +170,7 @@ export const Mission = () => {
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
   return (
-    <section id="mission" className="relative bg-webster text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden">
+    <section id="mission" className="relative bg-webster text-white py-14 md:py-20 px-6 md:px-12 overflow-hidden">
       <motion.svg
         viewBox="0 0 24 24"
         className="absolute -right-24 -top-24 w-[28rem] h-[28rem] opacity-10"
@@ -183,11 +183,13 @@ export const Mission = () => {
         <Reveal>
           <Eyebrow light>The mission</Eyebrow>
           <h2 className="font-display text-4xl md:text-7xl leading-[1.02]">
-            To turn websites into <em>windows</em> — places people want to lean in, linger, and
-            remember.
+            Creators of <em>bold</em> &amp; <em>beautiful</em> web windows.
           </h2>
+          <p className="mt-6 max-w-2xl text-white/80 text-lg leading-relaxed">
+            Websites people want to lean into, linger in, and remember.
+          </p>
         </Reveal>
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
+        <div className="mt-10 grid md:grid-cols-3 gap-8">
           {[
             ["Bold", "No templates. Every site is drawn for one brand, one voice, one story."],
             ["Beautiful", "Fashion-trained eyes on every pixel, every word, every transition."],
@@ -269,7 +271,7 @@ const STEPS = [
 ];
 
 export const Services = () => (
-  <section id="services" className="bg-white py-16 md:py-24 px-6 md:px-12">
+  <section id="services" className="bg-white py-12 md:py-16 px-6 md:px-12">
     <div className="max-w-6xl mx-auto">
       <div className="grid md:grid-cols-12 gap-8 items-end">
         <Reveal className="md:col-span-7">
@@ -288,7 +290,7 @@ export const Services = () => (
         </Reveal>
       </div>
 
-      <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-black/10 border border-black/10 rounded-3xl overflow-hidden">
+      <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-black/10 border border-black/10 rounded-3xl overflow-hidden">
         {SERVICES.map((s, i) => (
           <motion.div
             key={s.t}
@@ -318,7 +320,7 @@ export const Services = () => (
       </div>
 
       {/* brands */}
-      <div className="mt-20">
+      <div className="mt-12">
         <Reveal>
           <Eyebrow>Brands I've had the pleasure of working with</Eyebrow>
         </Reveal>
@@ -335,7 +337,7 @@ export const Services = () => (
       </div>
 
       {/* magic wands */}
-      <Reveal className="mt-14">
+      <Reveal className="mt-8">
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 border-t border-black/10 pt-6">
           <span className="font-display italic text-2xl shrink-0">My magic wands</span>
           <ul className="flex flex-wrap gap-2">
@@ -348,7 +350,7 @@ export const Services = () => (
         </div>
       </Reveal>
 
-      <div className="mt-20">
+      <div className="mt-12">
         <Reveal>
           <Eyebrow>How it goes</Eyebrow>
         </Reveal>
@@ -378,7 +380,7 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative bg-black text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden"
+      className="relative bg-black text-white py-14 md:py-20 px-6 md:px-12 overflow-hidden"
     >
       {Array.from({ length: 30 }).map((_, i) => (
         <motion.span
@@ -405,13 +407,13 @@ export const Contact = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-3 mt-12 bg-webster text-white text-lg md:text-xl px-8 py-4 rounded-full shadow-[0_0_40px_rgba(10,15,250,0.6)]"
+            className="inline-flex items-center gap-3 mt-8 bg-webster text-white text-lg md:text-xl px-8 py-4 rounded-full shadow-[0_0_40px_rgba(10,15,250,0.6)]"
           >
             Start a project <span aria-hidden="true">✦</span>
           </motion.a>
         </Reveal>
         <Reveal delay={0.35}>
-          <ul className="mt-14 flex flex-wrap justify-center gap-3">
+          <ul className="mt-8 flex flex-wrap justify-center gap-3">
             {SOCIALS.map((s) => (
               <li key={s.label}>
                 <a
