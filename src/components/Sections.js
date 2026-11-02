@@ -94,7 +94,7 @@ export const Marquee = () => {
   const words = ["Websites that move", "Brand storytelling", "Rebrands", "Motion", "EN / FR copy", "Paris → Montréal"];
   const row = [...words, ...words];
   return (
-    <div className="bg-black text-white py-5 overflow-hidden" aria-hidden="true">
+    <div className="bg-black text-white py-5 overflow-hidden border-t border-white/10" aria-hidden="true">
       <motion.div
         className="flex gap-10 whitespace-nowrap w-max"
         animate={{ x: ["0%", "-50%"] }}
@@ -341,10 +341,10 @@ export const Contact = () => {
 };
 
 export const Footer = () => (
-  <footer className="bg-black text-white/50 border-t border-white/10 px-6 md:px-12 py-8 text-sm">
+  <div className="bg-black text-white/50 border-t border-white/10 px-6 md:px-12 py-8 text-sm">
     <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-3">
       <span>© {new Date().getFullYear()} The Webster Design · Montréal</span>
       <span className="italic font-display text-base">Creators of bold & beautiful web windows.</span>
     </div>
-  </footer>
+  </div>
 );

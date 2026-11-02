@@ -6,6 +6,8 @@ const STAR_CONFIGS = Array.from({ length: 12 }).map(() => ({
   delay: 6.5 + Math.random() * 2,
   left: Math.random() * 100,
   top: 72 + Math.random() * 192,
+  // top-of-page stars sit below the logo + tagline so they never overlap it
+  heroTop: 230 + Math.random() * 110,
 }));
 
 // ⭐️ Floating Star Animation
@@ -124,7 +126,7 @@ const WebsterLanding = () => {
           key={`top-star-${i}`}
           delay={star.delay}
           left={star.left}
-          top={star.top}
+          top={star.heroTop}
         />
       ))}
 

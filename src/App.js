@@ -9,14 +9,16 @@ function App() {
       <Nav />
       <main>
         <WebsterLanding />
-        <Marquee />
         <Constellation />
         <Story />
         <Mission />
         <Services />
         <Contact />
       </main>
-      <Footer />
+      <footer>
+        <Marquee />
+        <Footer />
+      </footer>
     </MotionConfig>
   );
 }
