@@ -147,28 +147,6 @@ const Constellation = () => {
           ))}
         </div>
 
-        {/* compact index list: phones only, where you can't hover a star */}
-        <ol className="md:hidden mt-8 grid grid-cols-2 gap-x-6 border-t border-black/10">
-          {PROJECTS.map((p, i) => (
-            <li key={p.href} className="border-b border-black/10">
-              <a
-                href={p.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onMouseEnter={() => setActive(i)}
-                onMouseLeave={() => setActive(null)}
-                className={`flex items-baseline gap-2 py-2 transition-colors ${
-                  active === i ? "text-webster" : "text-black hover:text-webster"
-                }`}
-              >
-                <span className="text-[10px] tracking-widest text-black/40 w-5 shrink-0">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="font-display text-base italic flex-1 min-w-0">{p.title}</span>
-              </a>
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
   );
