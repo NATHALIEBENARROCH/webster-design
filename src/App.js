@@ -9,9 +9,9 @@ function App() {
       <Nav />
       <main>
         <WebsterLanding />
+        <Mission />
         <Constellation />
         <Story />
-        <Mission />
         <Services />
         <Contact />
       </main>

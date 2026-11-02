@@ -22,9 +22,9 @@ const Reveal = ({ children, delay = 0, className = "" }) => (
 
 /* ---------- NAV ---------- */
 const LINKS = [
+  { label: "Mission", href: "#mission" },
   { label: "Work", href: "#work" },
   { label: "Story", href: "#story" },
-  { label: "Mission", href: "#mission" },
   { label: "Services", href: "#services" },
   { label: "Contact", href: "#contact" },
 ];
