@@ -262,7 +262,7 @@ const SERVICES = [
 const BRANDS = [
   "Dior", "Paco Rabanne", "Alaïa", "BCBG Max Azria", "Hervé Léger", "IBM", "Bombardier",
   "McDonald's", "Montreal Museum of Fine Arts", "Artcurial", "Pentax", "Klick Health",
-  "Elna Medical", "Melanie Lyne", "Laura", "Diamond.com", "Ice.com", "Vuse", "Alain Weiz",
+  "Elna Medical", "Melanie Lyne", "Laura", "Diamond.com", "Ice.com", "Vuse",
   "Daniele Henkel", "Pillitteri Estates", "Inukt",
 ];
 
