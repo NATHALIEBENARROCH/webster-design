@@ -111,7 +111,7 @@ const ConnectingLine = ({ x1, y1, x2, y2, delay }) => (
 
 const WebsterLanding = () => {
   return (
-    <div className="min-h-screen w-full relative font-sans overflow-hidden bg-white">
+    <section id="top" className="min-h-screen w-full relative font-sans overflow-hidden bg-white">
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-[1]"
         style={{ backgroundImage: "url('/images/sunlit.jpg')" }}
@@ -138,7 +138,7 @@ const WebsterLanding = () => {
           className="text-black p-6 max-w-md"
         >
           <motion.h1
-            className="text-xl md:text-3xl italic mb-4"
+            className="font-display text-2xl md:text-4xl italic mb-4"
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 10.7, duration: 1, ease: "easeOut" }}
@@ -180,7 +180,7 @@ const WebsterLanding = () => {
           className="text-black p-6 max-w-md ml-auto text-right"
         >
           <motion.h2
-            className="text-xl md:text-3xl italic mb-4"
+            className="font-display text-2xl md:text-4xl italic mb-4"
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 14.2, duration: 1, ease: "easeOut" }}
@@ -199,7 +199,7 @@ const WebsterLanding = () => {
           />
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
