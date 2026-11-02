@@ -28,15 +28,16 @@ export const PROJECTS = [
   { title: "Lamarque", href: "https://www.behance.net/gallery/44680349/LAMARQUE", x: 55, y: 83 },
   { title: "Laura Canada", href: "https://www.behance.net/gallery/42245733/LAURA-FALL-2016", x: 70, y: 80 },
   { title: "Melanie Lyne", href: "https://www.behance.net/gallery/42244969/MELANIE-LYNE-FALL-2016", x: 70, y: 42 },
-  { title: "Hilary Radley", href: "https://www.behance.net/gallery/60629189/Hilary-Radley-Socks-Hosiery", x: 67, y: 10 },
-  { title: "BCBG Max Azria Group", href: "https://www.behance.net/gallery/4291163/BCBGMAXAZRIAGROUP", x: 83, y: 13 },
-  { title: "Renuar", href: "https://www.behance.net/gallery/75366805/RENUAR-FASHION-SPRING-2019", x: 81, y: 49 },
-  { title: "Sports Websites", href: "https://www.behance.net/gallery/128451149/Sports-Websites", x: 82, y: 79 },
-  { title: "Hockeytickets.ca", href: "https://www.behance.net/gallery/67462549/HOCKEYTICKETSCA", x: 97, y: 85 },
-  { title: "Pilloo.ca", href: "https://www.behance.net/gallery/153226173/Pillooca", x: 93, y: 49 },
+  { title: "Browns Shoes", href: "https://www.behance.net/gallery/53178637/BLACK-OUT", x: 67, y: 10 },
+  { title: "Hilary Radley", href: "https://www.behance.net/gallery/60629189/Hilary-Radley-Socks-Hosiery", x: 83, y: 13 },
+  { title: "BCBG Max Azria Group", href: "https://www.behance.net/gallery/4291163/BCBGMAXAZRIAGROUP", x: 81, y: 49 },
+  { title: "Renuar", href: "https://www.behance.net/gallery/75366805/RENUAR-FASHION-SPRING-2019", x: 82, y: 79 },
+  { title: "Sports Websites", href: "https://www.behance.net/gallery/128451149/Sports-Websites", x: 95, y: 85 },
+  { title: "Hockeytickets.ca", href: "https://www.behance.net/gallery/67462549/HOCKEYTICKETSCA", x: 93, y: 49 },
+  { title: "Pilloo.ca", href: "https://www.behance.net/gallery/153226173/Pillooca", x: 95, y: 19 },
 ];
 
 // Which stars get joined by a line (indexes into PROJECTS).
 export const CONSTELLATION_LINES = [
-  [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 12], [12, 13], [13, 14], [14, 15], [15, 16], [16, 17], [17, 18], [18, 19], [19, 20], [20, 21], [21, 22], [1, 4], [4, 7], [10, 13], [13, 16], [16, 19], [19, 22],
+  [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10], [10, 11], [11, 12], [12, 13], [13, 14], [14, 15], [15, 16], [16, 17], [17, 18], [18, 19], [19, 20], [20, 21], [21, 22], [22, 23], [1, 4], [4, 7], [10, 13], [13, 16], [16, 19], [19, 22],
 ];
