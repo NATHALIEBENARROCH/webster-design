@@ -114,8 +114,8 @@ export const Marquee = () => {
 const CHAPTERS = [
   {
     n: "I",
-    title: "Paris",
-    text: "It started in fashion — styling shoots, writing campaigns in two languages, learning that a brand is really a feeling you can walk into.",
+    title: "Fashion",
+    text: "Born in Casablanca, I started in fashion: runway shows, then work with manufacturers and importers in Casablanca and Los Angeles, and styling shoots and campaigns in Paris. That's where I learned a brand is a feeling you can walk into.",
   },
   {
     n: "II",
