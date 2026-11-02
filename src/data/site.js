@@ -7,7 +7,7 @@ export const SOCIALS = [
 
 // Optional: put your email here (e.g. "hello@thewebsterdesign.com")
 // and the big contact button will open an email instead of your Behance page.
-export const CONTACT_EMAIL = "";
+export const CONTACT_EMAIL = "hello@thewebster.io";
 
 // x / y are positions (in %) inside the constellation sky.
 export const PROJECTS = [
