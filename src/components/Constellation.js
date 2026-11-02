@@ -100,8 +100,8 @@ const Constellation = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.9 }}
           >
-            Brands, rebrands, apps and web windows from Paris to Montreal. Hover a star, then
-            click to open the full project.
+            Brands, rebrands, apps, web windows and social media, from Casablanca to Paris,
+            Los Angeles and Montréal. Hover a star, then click to open the full project.
           </motion.p>
         </div>
 
