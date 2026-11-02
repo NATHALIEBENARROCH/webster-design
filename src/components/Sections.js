@@ -418,6 +418,17 @@ export const Contact = () => {
           >
             Start a project <span aria-hidden="true">✦</span>
           </motion.a>
+          {CONTACT_EMAIL && (
+            <p className="mt-5 text-white/70">
+              or write to{" "}
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="text-white underline decoration-webster decoration-2 underline-offset-4 hover:text-webster transition-colors select-all"
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </p>
+          )}
         </Reveal>
         <Reveal delay={0.35}>
           <ul className="mt-8 flex flex-wrap justify-center gap-3">
