@@ -259,11 +259,42 @@ const SERVICES = [
   },
 ];
 
-const BRANDS = [
-  "Dior", "Paco Rabanne", "Alaïa", "BCBG Max Azria", "Hervé Léger", "IBM", "Bombardier",
-  "McDonald's", "Montreal Museum of Fine Arts", "Artcurial", "Pentax", "Klick Health",
-  "Elna Medical", "Melanie Lyne", "Laura", "Diamond.com", "Ice.com", "Vuse",
-  "Daniele Henkel", "Pillitteri Estates", "Inukt",
+// Logos of brands Nathalie has worked with (files in public/images/brands).
+const BRAND_ROW_1 = [
+  { name: "Dior", src: "/images/brands/dior.png" },
+  { name: "Paco Rabanne", src: "/images/brands/paco-rabanne.png" },
+  { name: "Alaïa", src: "/images/brands/alaia.png" },
+  { name: "BCBG Max Azria", src: "/images/brands/bcbg.png" },
+  { name: "Hervé Léger", src: "/images/brands/herve-leger.png" },
+  { name: "IBM", src: "/images/brands/ibm.png" },
+  { name: "Bombardier", src: "/images/brands/bombardier.png" },
+  { name: "McDonald's", src: "/images/brands/mcdonalds.png" },
+  { name: "Montreal Museum of Fine Arts", src: "/images/brands/mbam.png" },
+  { name: "Artcurial", src: "/images/brands/artcurial.png" },
+  { name: "Pentax", src: "/images/brands/pentax.png" },
+  { name: "Klick Health", src: "/images/brands/klick.png" },
+  { name: "Elna Medical", src: "/images/brands/elna.png" },
+  { name: "Melanie Lyne", src: "/images/brands/melanie-lyne.png" },
+  { name: "Laura Canada", src: "/images/brands/laura.png" },
+];
+
+const BRAND_ROW_2 = [
+  { name: "Diamond.com", src: "/images/brands/diamond.png" },
+  { name: "Ice.com", src: "/images/brands/ice.png" },
+  { name: "Vuse", src: "/images/brands/vuse.png" },
+  { name: "Daniele Henkel", src: "/images/brands/daniele-henkel.png" },
+  { name: "Pillitteri Estates", src: "/images/brands/pillitteri.png" },
+  { name: "Inukt", src: "/images/brands/inukt.png" },
+  { name: "YHP", src: "/images/brands/yhp.png" },
+  { name: "CDL Laboratoires", src: "/images/brands/cdl.png" },
+  { name: "Cann.edenn", src: "/images/brands/cann-edenn.png" },
+  { name: "Cann & Herb", src: "/images/brands/cann-herb.png" },
+  { name: "Bikinis.ca", src: "/images/brands/bikinis.png" },
+  { name: "Swimwear.ca", src: "/images/brands/swimwear.png" },
+  { name: "Hockeytickets.ca", src: "/images/brands/hockeytickets.png" },
+  { name: "etickets.ca", src: "/images/brands/etickets.png" },
+  { name: "Pilloo", src: "/images/brands/pilloo.png" },
+  { name: "Lamarque", src: "/images/brands/lamarque.png" },
 ];
 
 const TOOLS = [
@@ -326,23 +357,6 @@ export const Services = () => (
         ))}
       </div>
 
-      {/* brands */}
-      <div className="mt-12">
-        <Reveal>
-          <Eyebrow>Brands our founder has had the pleasure of working with</Eyebrow>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 font-display text-2xl md:text-4xl leading-snug">
-            {BRANDS.map((b, i) => (
-              <li key={b} className="flex items-center gap-6">
-                <span className="hover:text-webster hover:italic transition-all">{b}</span>
-                {i < BRANDS.length - 1 && <span className="text-webster text-base" aria-hidden="true">✦</span>}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-      </div>
-
       {/* magic wands */}
       <Reveal className="mt-8">
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 border-t border-black/10 pt-6">
@@ -375,6 +389,46 @@ export const Services = () => (
           ))}
         </div>
       </div>
+    </div>
+  </section>
+);
+
+/* ---------- BRANDS ---------- */
+const LogoRow = ({ logos, reverse = false, duration = 45 }) => {
+  const doubled = [...logos, ...logos];
+  return (
+    <div className="relative overflow-hidden">
+      <motion.ul
+        className="flex items-center gap-14 md:gap-20 w-max pr-14 md:pr-20"
+        animate={{ x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
+        transition={{ duration, repeat: Infinity, ease: "linear" }}
+      >
+        {doubled.map((l, i) => (
+          <li key={i} className="shrink-0" aria-hidden={i >= logos.length}>
+            <img
+              src={l.src}
+              alt={i < logos.length ? l.name : ""}
+              title={l.name}
+              loading="lazy"
+              className="h-9 md:h-12 w-auto object-contain opacity-60 hover:opacity-100 hover:scale-110 transition duration-300"
+            />
+          </li>
+        ))}
+      </motion.ul>
+    </div>
+  );
+};
+
+export const Brands = () => (
+  <section id="brands" className="bg-[#f4f4f6] py-12 md:py-16 overflow-hidden">
+    <div className="max-w-6xl mx-auto px-6 md:px-12 mb-8 md:mb-10">
+      <Reveal>
+        <Eyebrow>Brands our founder has had the pleasure of working with</Eyebrow>
+      </Reveal>
+    </div>
+    <div className="space-y-8 md:space-y-10 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+      <LogoRow logos={BRAND_ROW_1} duration={50} />
+      <LogoRow logos={BRAND_ROW_2} duration={55} reverse />
     </div>
   </section>
 );
