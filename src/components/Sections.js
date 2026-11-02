@@ -114,18 +114,23 @@ export const Marquee = () => {
 const CHAPTERS = [
   {
     n: "I",
-    title: "Fashion",
-    text: "Born in Casablanca, I started in fashion: runway shows and work with manufacturers and importers, first in Casablanca, then in Los Angeles alongside Max Azria, the king of fashion behind BCBG. Add styling shoots and campaigns in Paris, and I learned a brand is a feeling you can walk into.",
+    title: "Paris",
+    text: "After degrees in Communications from Concordia University in Montréal and the Sorbonne in Paris, I began in the Parisian fashion industry, leading creative projects for BCBG Max Azria and contributing to the Dior by Galliano photography book, launched at Artcurial on the Champs-Élysées.",
   },
   {
     n: "II",
     title: "Montréal",
-    text: "Then came the brands: rebrands for retailers, healthcare, wine, tech. Logos, voices, whole visual worlds built from a single spark.",
+    text: "I led digital branding and campaign strategy for Diamond.com and Ice.com, developed the Inukt lifestyle brand with a launch at the Montreal Museum of Fine Arts, and shaped the brand identity and clinic environments for Elna Medical. I also redefined the visual identity of Melanie Lyne and Laura: advertising campaigns, eCommerce strategy, website redesigns and in-store brand experiences.",
   },
   {
     n: "III",
+    title: "Code",
+    text: "In 2020 I completed a web development bootcamp at Concordia University. With IBM partners and YHP advertising agencies, I designed and coded applications, websites, video assets and digital tools. I then built and managed Shopify eCommerce sites for Emall.ca, including Swimwear.ca and Bikinis.ca, and led SEO strategy and conversion-focused landing pages for other clients.",
+  },
+  {
+    n: "IV",
     title: "The Webster",
-    text: "Today I connect those stars with code. Websites that breathe, drift and sparkle — so your story doesn't just sit on a screen. It moves.",
+    text: "My work bridges creativity and performance: user-centered, search-optimized digital experiences and brand stories that resonate, captivate and convert.",
   },
 ];
 
@@ -139,8 +144,9 @@ export const Story = () => (
             Hi, I'm <em>Nathalie.</em>
           </h2>
           <p className="mt-6 text-black/70 leading-relaxed max-w-sm">
-            Creative director, copywriter and stargazer. Founder of The Webster Design — a tiny
-            boutique studio making bold & beautiful web windows.
+            A bilingual creative director with global experience, turning ideas into bold,
+            design-led campaigns across advertising, branding, communications and digital
+            platforms.
           </p>
         </Reveal>
       </div>
