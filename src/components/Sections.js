@@ -115,7 +115,7 @@ const CHAPTERS = [
   {
     n: "I",
     title: "Fashion",
-    text: "Born in Casablanca, I started in fashion: runway shows, then work with manufacturers and importers in Casablanca and Los Angeles, and styling shoots and campaigns in Paris. That's where I learned a brand is a feeling you can walk into.",
+    text: "Born in Casablanca, I started in fashion: runway shows and work with manufacturers and importers, first in Casablanca, then in Los Angeles alongside Max Azria, the king of fashion behind BCBG. Add styling shoots and campaigns in Paris, and I learned a brand is a feeling you can walk into.",
   },
   {
     n: "II",
