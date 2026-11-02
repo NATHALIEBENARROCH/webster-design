@@ -77,9 +77,9 @@ const Constellation = () => {
   const [active, setActive] = useState(null);
 
   return (
-    <section id="work" className="relative bg-white py-24 md:py-32 px-6 md:px-12 overflow-hidden">
+    <section id="work" className="relative bg-white pt-16 pb-12 md:pt-20 md:pb-16 px-6 md:px-12 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -144,8 +144,8 @@ const Constellation = () => {
           ))}
         </div>
 
-        {/* index list, also links (great on phones) */}
-        <ol className="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-x-10 border-t border-black/10">
+        {/* compact index list: phones only, where you can't hover a star */}
+        <ol className="md:hidden mt-8 grid grid-cols-2 gap-x-6 border-t border-black/10">
           {PROJECTS.map((p, i) => (
             <li key={p.href} className="border-b border-black/10">
               <a
@@ -154,15 +154,14 @@ const Constellation = () => {
                 rel="noopener noreferrer"
                 onMouseEnter={() => setActive(i)}
                 onMouseLeave={() => setActive(null)}
-                className={`flex items-baseline gap-4 py-4 transition-colors ${
+                className={`flex items-baseline gap-2 py-2 transition-colors ${
                   active === i ? "text-webster" : "text-black hover:text-webster"
                 }`}
               >
-                <span className="text-xs tracking-widest text-black/40 w-6">
+                <span className="text-[10px] tracking-widest text-black/40 w-5 shrink-0">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-display text-xl italic flex-1">{p.title}</span>
-                <span aria-hidden="true">↗</span>
+                <span className="font-display text-base italic flex-1 min-w-0">{p.title}</span>
               </a>
             </li>
           ))}

@@ -130,7 +130,7 @@ const CHAPTERS = [
 ];
 
 export const Story = () => (
-  <section id="story" className="relative bg-[#fafaf7] py-24 md:py-36 px-6 md:px-12 overflow-hidden">
+  <section id="story" className="relative bg-[#fafaf7] py-16 md:py-24 px-6 md:px-12 overflow-hidden">
     <div className="max-w-6xl mx-auto grid md:grid-cols-12 gap-12">
       <div className="md:col-span-5 md:sticky md:top-32 self-start">
         <Reveal>
@@ -170,7 +170,7 @@ export const Mission = () => {
   const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]);
 
   return (
-    <section id="mission" className="relative bg-webster text-white py-28 md:py-40 px-6 md:px-12 overflow-hidden">
+    <section id="mission" className="relative bg-webster text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden">
       <motion.svg
         viewBox="0 0 24 24"
         className="absolute -right-24 -top-24 w-[28rem] h-[28rem] opacity-10"
@@ -221,7 +221,7 @@ const STEPS = [
 ];
 
 export const Services = () => (
-  <section id="services" className="bg-white py-24 md:py-36 px-6 md:px-12">
+  <section id="services" className="bg-white py-16 md:py-24 px-6 md:px-12">
     <div className="max-w-6xl mx-auto">
       <Reveal>
         <Eyebrow>What I make</Eyebrow>
@@ -287,7 +287,7 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative bg-black text-white py-28 md:py-40 px-6 md:px-12 overflow-hidden"
+      className="relative bg-black text-white py-20 md:py-28 px-6 md:px-12 overflow-hidden"
     >
       {Array.from({ length: 30 }).map((_, i) => (
         <motion.span
