@@ -2,14 +2,13 @@
 // Add, remove or reorder projects and the constellation updates itself.
 
 export const SOCIALS = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/nathalie-benarroch" },
   { label: "Instagram", href: "https://instagram.com/nathalie_benarroch" },
   { label: "Behance", href: "https://www.behance.net/nathalieben" },
   { label: "Facebook", href: "https://facebook.com/nathalie.benarroch.1" },
 ];
 
 // Optional: put your email here (e.g. "hello@thewebsterdesign.com")
-// and the big contact button will open an email instead of LinkedIn.
+// and the big contact button will open an email instead of Instagram.
 export const CONTACT_EMAIL = "";
 
 // x / y are positions (in %) inside the constellation sky.

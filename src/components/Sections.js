@@ -381,8 +381,8 @@ export const Services = () => (
 
 /* ---------- CONTACT ---------- */
 export const Contact = () => {
-  const linkedin = SOCIALS.find((s) => s.label === "LinkedIn")?.href;
-  const cta = CONTACT_EMAIL ? `mailto:${CONTACT_EMAIL}` : linkedin;
+  const instagram = SOCIALS.find((s) => s.label === "Instagram")?.href;
+  const cta = CONTACT_EMAIL ? `mailto:${CONTACT_EMAIL}` : instagram;
 
   return (
     <section
