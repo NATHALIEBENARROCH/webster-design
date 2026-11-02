@@ -1,8 +1,26 @@
-import "./App.css";
-import WebsterLanding from "./components/WebsterLanding"; // also fix import
+import { MotionConfig } from "framer-motion";
+import WebsterLanding from "./components/WebsterLanding";
+import Constellation from "./components/Constellation";
+import { Nav, Marquee, Story, Mission, Services, Contact, Footer } from "./components/Sections";
 
 function App() {
-  return <WebsterLanding />;
+  return (
+    <MotionConfig reducedMotion="user">
+      <Nav />
+      <main>
+        <WebsterLanding />
+        <Mission />
+        <Constellation />
+        <Story />
+        <Services />
+        <Contact />
+      </main>
+      <footer>
+        <Marquee />
+        <Footer />
+      </footer>
+    </MotionConfig>
+  );
 }
 
 export default App;
