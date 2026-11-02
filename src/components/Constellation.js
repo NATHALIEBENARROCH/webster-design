@@ -19,7 +19,7 @@ const ProjectStar = ({ project, index, active, setActive }) => {
       initial={{ opacity: 0, scale: 0, rotate: -90 }}
       whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ delay: 0.15 * index, type: "spring", stiffness: 160, damping: 12 }}
+      transition={{ delay: 0.1 * index, type: "spring", stiffness: 160, damping: 12 }}
       onMouseEnter={() => setActive(index)}
       onMouseLeave={() => setActive(null)}
       onFocus={() => setActive(index)}
@@ -109,7 +109,7 @@ const Constellation = () => {
         </div>
 
         {/* the sky */}
-        <div className="relative w-full aspect-[4/5] sm:aspect-[16/10] md:aspect-[16/8] rounded-[2rem] border border-black/10 bg-[radial-gradient(ellipse_at_top,_#f4f5ff_0%,_#ffffff_70%)]">
+        <div className="relative w-full aspect-[3/4] sm:aspect-[4/3] md:aspect-[16/9] rounded-[2rem] border border-black/10 bg-[radial-gradient(ellipse_at_top,_#f4f5ff_0%,_#ffffff_70%)]">
           <svg
             className="absolute inset-0 w-full h-full"
             viewBox="0 0 100 100"
@@ -136,7 +136,7 @@ const Constellation = () => {
                   initial={{ pathLength: 0 }}
                   whileInView={{ pathLength: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  transition={{ delay: 1 + i * 0.12, duration: 0.8, ease: "easeInOut" }}
+                  transition={{ delay: 1 + i * 0.08, duration: 0.8, ease: "easeInOut" }}
                 />
               );
             })}
