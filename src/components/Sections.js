@@ -192,7 +192,7 @@ export const Mission = () => {
         <div className="mt-10 grid md:grid-cols-3 gap-8">
           {[
             ["Bold", "Every site is drawn for one brand, one voice, one story, with one strong, impactful visual message."],
-            ["Beautiful", "Fashion-trained eyes on every pixel, every word, every transition."],
+            ["Beautiful", "A fashion-trained eye on every pixel and every transition, and a writer's ear for every word."],
             ["Moving", "Motion with meaning: animation that guides, delights and tells the story."],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={0.15 * i}>
