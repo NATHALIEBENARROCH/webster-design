@@ -394,12 +394,19 @@ export const Services = () => (
 );
 
 /* ---------- BRANDS ---------- */
+// All logos, dealt into 3 rows so more brands are visible at once.
+const ALL_BRANDS = [...BRAND_ROW_1, ...BRAND_ROW_2];
+const ROW_COUNT = 3;
+const BRAND_ROWS = Array.from({ length: ROW_COUNT }, (_, r) =>
+  ALL_BRANDS.filter((_, i) => i % ROW_COUNT === r)
+);
+
 const LogoRow = ({ logos, reverse = false, duration = 45 }) => {
   const doubled = [...logos, ...logos];
   return (
     <div className="relative overflow-hidden">
       <motion.ul
-        className="flex items-center gap-14 md:gap-20 w-max pr-14 md:pr-20"
+        className="flex items-center gap-10 md:gap-14 w-max pr-10 md:pr-14"
         animate={{ x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }}
         transition={{ duration, repeat: Infinity, ease: "linear" }}
       >
@@ -410,7 +417,7 @@ const LogoRow = ({ logos, reverse = false, duration = 45 }) => {
               alt={i < logos.length ? l.name : ""}
               title={l.name}
               loading="lazy"
-              className="h-9 md:h-12 w-auto object-contain opacity-60 hover:opacity-100 hover:scale-110 transition duration-300"
+              className="h-7 md:h-10 w-auto object-contain opacity-70 hover:opacity-100 hover:scale-110 transition duration-300"
             />
           </li>
         ))}
@@ -420,15 +427,16 @@ const LogoRow = ({ logos, reverse = false, duration = 45 }) => {
 };
 
 export const Brands = () => (
-  <section id="brands" className="bg-[#f4f4f6] py-12 md:py-16 overflow-hidden">
-    <div className="max-w-6xl mx-auto px-6 md:px-12 mb-8 md:mb-10">
+  <section id="brands" className="bg-[#f4f4f6] py-10 md:py-14 overflow-hidden">
+    <div className="max-w-6xl mx-auto px-6 md:px-12 mb-6 md:mb-8">
       <Reveal>
         <Eyebrow>Brands our founder has had the pleasure of working with</Eyebrow>
       </Reveal>
     </div>
-    <div className="space-y-8 md:space-y-10 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-      <LogoRow logos={BRAND_ROW_1} duration={50} />
-      <LogoRow logos={BRAND_ROW_2} duration={55} reverse />
+    <div className="space-y-6 md:space-y-8 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+      {BRAND_ROWS.map((row, i) => (
+        <LogoRow key={i} logos={row} duration={40 + i * 6} reverse={i % 2 === 1} />
+      ))}
     </div>
   </section>
 );
