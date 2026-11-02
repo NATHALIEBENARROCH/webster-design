@@ -208,56 +208,147 @@ export const Mission = () => {
 
 /* ---------- SERVICES ---------- */
 const SERVICES = [
-  { t: "Websites that move", d: "Custom, animated sites in React — scroll stories, playful micro-interactions, fast and mobile-first." },
-  { t: "Brand storytelling", d: "Naming, voice and narrative that make people feel something before they read a word." },
-  { t: "Rebrands & identity", d: "Logos, palettes, type and the visual systems that hold them together." },
-  { t: "Bilingual copy", d: "English & French copywriting for web, campaigns and social — written, not translated." },
+  {
+    t: "Websites & apps that move",
+    d: "Custom animated sites in React, Shopify eCommerce, and apps designed in Figma and coded in-house. Landing pages built to convert.",
+    proof: "Swimwear.ca · Bikinis.ca · Drive-thru-closet",
+  },
+  {
+    t: "Branding & identity",
+    d: "Brand strategy, names, logos and full visual systems, from a first spark to a complete rebrand.",
+    proof: "Melanie Lyne · Laura · Elna Medical",
+  },
+  {
+    t: "Advertising & creative direction",
+    d: "Campaign concepts, photo shoots and display ads that stop the scroll, across print, web and social.",
+    proof: "Diamond.com · Ice.com · Pentax",
+  },
+  {
+    t: "SEO, SEM & performance",
+    d: "Keyword strategy, search-optimized copy, Google Ads, and GA4 and Tag Manager set up properly, so the brand gets found and you can see what it earns.",
+    proof: "Google Ads · GA4 · Tag Manager",
+  },
+  {
+    t: "Social media & newsletters",
+    d: "Content calendars, posts, blogs, newsletters, brochures and direct mail that keep people coming back.",
+    proof: "Ice.com · Etickets.ca · Hockeytickets.ca",
+  },
+  {
+    t: "Bilingual copywriting",
+    d: "English and French copy for web, campaigns and packaging, written in each language from the start.",
+    proof: "EN / FR",
+  },
+  {
+    t: "Packaging & product lines",
+    d: "Product lines and packaging that look as good on a shelf as they do in a feed.",
+    proof: "Inukt · Cann.Edenn · Cann & Herb",
+  },
+  {
+    t: "Spaces, retail & events",
+    d: "Clinic and store interiors, window displays, trade-show booths and launch events people remember.",
+    proof: "Montreal Museum of Fine Arts · Artcurial Paris",
+  },
+];
+
+const BRANDS = [
+  "Dior", "Paco Rabanne", "Alaïa", "BCBG Max Azria", "Hervé Léger", "IBM", "Bombardier",
+  "McDonald's", "Montreal Museum of Fine Arts", "Artcurial", "Pentax", "Klick Health",
+  "Elna Medical", "Melanie Lyne", "Laura", "Diamond.com", "Ice.com", "Vuse", "Alain Weiz",
+  "Daniele Henkel", "Pillitteri Estates", "Inukt",
+];
+
+const TOOLS = [
+  "React", "JavaScript", "Shopify", "Figma", "Photoshop", "Illustrator", "InDesign",
+  "Premiere Pro", "After Effects", "Google Analytics", "Google Ads", "Tag Manager",
 ];
 
 const STEPS = [
   ["Dream", "We talk, sketch and find the star your brand is orbiting."],
-  ["Connect", "Design, words and code come together, one constellation at a time."],
-  ["Shine", "Launch, share, and watch your window light up."],
+  ["Connect", "Strategy, design, words and code come together, one constellation at a time."],
+  ["Shine", "Launch, then grow it with SEO, ads and content, and watch your window light up."],
 ];
 
 export const Services = () => (
   <section id="services" className="bg-white py-16 md:py-24 px-6 md:px-12">
     <div className="max-w-6xl mx-auto">
-      <Reveal>
-        <Eyebrow>What I make</Eyebrow>
-        <h2 className="font-display text-5xl md:text-7xl leading-[0.95] max-w-3xl">
-          Websites that <em className="text-webster">move.</em>
-        </h2>
-      </Reveal>
+      <div className="grid md:grid-cols-12 gap-8 items-end">
+        <Reveal className="md:col-span-7">
+          <Eyebrow>What I make</Eyebrow>
+          <h2 className="font-display text-5xl md:text-7xl leading-[0.95]">
+            Websites that <em className="text-webster">move.</em>
+            <br />
+            Brands that <em>last.</em>
+          </h2>
+        </Reveal>
+        <Reveal className="md:col-span-5" delay={0.15}>
+          <p className="text-black/70 leading-relaxed text-lg">
+            Twenty years from Paris fashion houses to Shopify storefronts, in one studio:
+            strategy, identity, words, code, and the campaigns that get it all seen.
+          </p>
+        </Reveal>
+      </div>
 
-      <div className="mt-16 grid sm:grid-cols-2 gap-px bg-black/10 border border-black/10 rounded-3xl overflow-hidden">
+      <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-black/10 border border-black/10 rounded-3xl overflow-hidden">
         {SERVICES.map((s, i) => (
           <motion.div
             key={s.t}
-            className="group relative bg-white p-8 md:p-12 overflow-hidden"
+            className="group relative bg-white p-7 md:p-8 overflow-hidden flex flex-col"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.6 }}
+            transition={{ delay: (i % 4) * 0.08, duration: 0.6 }}
           >
             <span className="absolute inset-0 bg-black origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-out" />
-            <div className="relative">
-              <span className="text-xs tracking-widest text-black/40 group-hover:text-white/50 transition-colors">
-                0{i + 1}
-              </span>
-              <h3 className="mt-6 font-display text-3xl md:text-4xl italic group-hover:text-white transition-colors">
-                {s.t}
-              </h3>
-              <p className="mt-4 text-black/65 leading-relaxed group-hover:text-white/75 transition-colors">{s.d}</p>
-              <span className="inline-block mt-6 text-webster text-2xl transition-transform duration-500 group-hover:rotate-[144deg] group-hover:scale-125">
+            <div className="relative flex flex-col h-full">
+              <span className="text-webster text-xl inline-block w-fit transition-transform duration-500 group-hover:rotate-[144deg] group-hover:scale-125">
                 ✦
               </span>
+              <h3 className="mt-5 font-display text-2xl md:text-[1.7rem] leading-tight italic group-hover:text-white transition-colors">
+                {s.t}
+              </h3>
+              <p className="mt-3 text-sm text-black/65 leading-relaxed group-hover:text-white/75 transition-colors flex-1">
+                {s.d}
+              </p>
+              <p className="mt-5 text-[11px] tracking-wider uppercase text-black/40 group-hover:text-white/50 transition-colors">
+                {s.proof}
+              </p>
             </div>
           </motion.div>
         ))}
       </div>
 
-      <div className="mt-24">
+      {/* brands */}
+      <div className="mt-20">
+        <Reveal>
+          <Eyebrow>Brands I've had the pleasure of working with</Eyebrow>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 font-display text-2xl md:text-4xl leading-snug">
+            {BRANDS.map((b, i) => (
+              <li key={b} className="flex items-center gap-6">
+                <span className="hover:text-webster hover:italic transition-all">{b}</span>
+                {i < BRANDS.length - 1 && <span className="text-webster text-base" aria-hidden="true">✦</span>}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </div>
+
+      {/* magic wands */}
+      <Reveal className="mt-14">
+        <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 border-t border-black/10 pt-6">
+          <span className="font-display italic text-2xl shrink-0">My magic wands</span>
+          <ul className="flex flex-wrap gap-2">
+            {TOOLS.map((t) => (
+              <li key={t} className="text-xs px-3 py-1.5 rounded-full border border-black/15 text-black/70">
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Reveal>
+
+      <div className="mt-20">
         <Reveal>
           <Eyebrow>How it goes</Eyebrow>
         </Reveal>
