@@ -17,7 +17,7 @@ const HERO_STARS = Array.from({ length: HERO_STAR_COUNT }).flatMap((_, i) => {
   const star = {
     delay: 6.5 + Math.random() * 2,
     left: 1 + i * col + Math.random() * col * 0.7,
-    top: 125 + Math.random() * 95,
+    top: 145 + Math.random() * 90,
   };
   const isDouble = i % 5 === 2; // about every fifth star gets a twin
   if (!isDouble) return [star];
@@ -82,7 +82,7 @@ const LogoExplosion = () => {
   });
 
   return (
-    <div className="absolute top-[0.5in] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[50] w-72 h-40 flex items-center justify-center">
+    <div className="absolute top-[64px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[50] w-72 h-40 flex items-center justify-center">
       {sparkles.map((sparkle, i) => (
         <motion.img
           key={i}
@@ -110,10 +110,13 @@ const LogoExplosion = () => {
         transition={{ delay: 5.5, duration: 0.8, ease: "easeOut" }}
       >
         <img
-          src="/images/logo.png"
-          alt="Webster Design Logo"
-          className="w-72 h-auto"
+          src="/images/logo-mark.png"
+          alt="The Webster Design"
+          className="w-72 md:w-80 h-auto mx-auto"
         />
+        <p className="mt-2 text-center whitespace-nowrap font-medium text-black text-lg md:text-2xl tracking-tight">
+          Creators of bold &amp; beautiful web windows.
+        </p>
       </motion.div>
     </div>
   );
@@ -140,7 +143,7 @@ const WebsterLanding = () => {
 
       <LogoExplosion />
 
-      <div className="relative z-[40] flex flex-col justify-start items-start min-h-screen px-8 pt-[210px] md:pt-[230px] text-left">
+      <div className="relative z-[40] flex flex-col justify-start items-start min-h-screen px-8 pt-[225px] md:pt-[245px] text-left">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
