@@ -193,7 +193,7 @@ export const Mission = () => {
           {[
             ["Bold", "Every site is drawn for one brand, one voice, one story, with one strong, impactful visual message."],
             ["Beautiful", "A fashion-trained eye on every pixel and every transition, and a writer's flair for every word."],
-            ["Moving", "Motion with meaning: animation that guides, delights and tells the story."],
+            ["Moving", "Layered motion adds depth, turns a scroll into a journey through your story, and keeps visitors on the page longer. It's what makes a brand feel crafted and premium."],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={0.15 * i}>
               <div className="border-t border-white/30 pt-6">
