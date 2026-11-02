@@ -1,13 +1,30 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// ⭐ Stars for the "connect the stars" constellation: one per column so they
-// spread across the whole width, at varied heights for an open, airy shape.
-const STAR_CONFIGS = Array.from({ length: 12 }).map((_, i) => ({
-  delay: 6.5 + Math.random() * 2,
-  left: 4 + i * (92 / 11) + (Math.random() - 0.5) * 3,
-  top: 30 + Math.random() * 190,
-}));
+// ☁ "Connect the stars" cloud: stars sit on a cloud outline (clockwise from
+// the bottom left), and puffy dotted arcs join them into one closed loop.
+const CLOUD_W = 600;
+const CLOUD_H = 260;
+const CLOUD_CENTER = { x: 300, y: 160 };
+const CLOUD_STARS = [
+  [105, 222], [58, 168], [100, 112], [178, 76], [270, 42], [365, 52],
+  [440, 84], [515, 118], [548, 178], [478, 226], [370, 234], [240, 232],
+].map(([x, y]) => ({ x, y, delay: 12.5 + Math.random() * 2 }));
+
+const CLOUD_ARCS = CLOUD_STARS.map((a, i) => {
+  const b = CLOUD_STARS[(i + 1) % CLOUD_STARS.length]; // last joins the first
+  const mx = (a.x + b.x) / 2;
+  const my = (a.y + b.y) / 2;
+  const dx = mx - CLOUD_CENTER.x;
+  const dy = my - CLOUD_CENTER.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const seg = Math.hypot(b.x - a.x, b.y - a.y);
+  const isBottom = a.y > 200 && b.y > 200;
+  const bulge = seg * (isBottom ? 0.12 : 0.55); // flat base, puffy top
+  return `M ${a.x} ${a.y} Q ${mx + (dx / len) * bulge} ${my + (dy / len) * bulge} ${b.x} ${b.y}`;
+});
+
+const STAR_POINTS = "12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9 12 2";
 
 // ⭐ Stars under the logo: spread evenly across the width (one per column),
 // with a few "double stars" — a twin tucked right next to its partner.
@@ -29,15 +46,6 @@ const HERO_STARS = Array.from({ length: HERO_STAR_COUNT }).flatMap((_, i) => {
   return [star, twin];
 });
 
-// ☁ Cloud-like connections: each star joins its neighbour with a soft arc
-// that billows upward, like the bumps on a cloud outline.
-const CLOUD_ARCS = STAR_CONFIGS.slice(0, -1).map((a, i) => {
-  const b = STAR_CONFIGS[i + 1];
-  const mx = (a.left + b.left) / 2;
-  const lift = 28 + Math.random() * 30;
-  const my = Math.min(a.top, b.top) - lift;
-  return `M ${a.left} ${a.top} Q ${mx} ${my} ${b.left} ${b.top}`;
-});
 
 // ⭐️ Floating Star Animation
 const Star = ({ delay, left, top }) => (
@@ -172,8 +180,8 @@ const WebsterLanding = () => {
         <div className="relative w-full h-64 -mt-16 z-[30]">
           <svg
             className="absolute inset-0 w-full h-full overflow-visible z-10"
-            viewBox="0 0 100 256"
-            preserveAspectRatio="none"
+            viewBox={`0 0 ${CLOUD_W} ${CLOUD_H}`}
+            preserveAspectRatio="xMidYMid meet"
             aria-hidden="true"
           >
             {CLOUD_ARCS.map((d, i) => (
@@ -183,19 +191,32 @@ const WebsterLanding = () => {
                 fill="none"
                 stroke="black"
                 strokeOpacity="0.55"
-                strokeWidth="1.6"
+                strokeWidth="1.8"
                 strokeLinecap="round"
                 strokeDasharray="1 7"
-                vectorEffect="non-scaling-stroke"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 14.8 + i * 0.3, duration: 0.9, ease: "easeOut" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 14.8 + i * 0.25, duration: 0.8, ease: "easeOut" }}
               />
             ))}
+            {CLOUD_STARS.map((star, i) => (
+              <motion.g
+                key={`cloud-star-${i}`}
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 2, delay: star.delay }}
+              >
+                <polygon
+                  points={STAR_POINTS}
+                  transform={`translate(${star.x - 12} ${star.y - 12})`}
+                  fill="white"
+                  stroke="black"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                />
+              </motion.g>
+            ))}
           </svg>
-          {STAR_CONFIGS.map((star, i) => (
-            <Star key={`bottom-star-${i}`} delay={star.delay + 6} left={star.left} top={star.top} />
-          ))}
         </div>
 
         <motion.div
