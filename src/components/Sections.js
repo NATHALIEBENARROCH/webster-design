@@ -129,8 +129,8 @@ const CHAPTERS = [
   },
   {
     n: "IV",
-    title: "The Webster",
-    text: "My work bridges creativity and performance: user-centered, search-optimized digital experiences and brand stories that resonate, captivate and convert.",
+    title: "The Websters",
+    text: "I founded The Webster to bridge creativity and performance. Today it's a team, The Websters, crafting user-centered, search-optimized digital experiences and brand stories that resonate, captivate and convert.",
   },
 ];
 
@@ -144,7 +144,7 @@ export const Story = () => (
             Hi, I'm <em>Nathalie.</em>
           </h2>
           <p className="mt-6 text-black/70 leading-relaxed max-w-sm">
-            A bilingual creative director with global experience, turning ideas into bold,
+            Founder of The Webster. A bilingual creative director with global experience, turning ideas into bold,
             design-led campaigns across advertising, branding, communications and digital
             platforms.
           </p>
@@ -282,7 +282,7 @@ export const Services = () => (
     <div className="max-w-6xl mx-auto">
       <div className="grid md:grid-cols-12 gap-8 items-end">
         <Reveal className="md:col-span-7">
-          <Eyebrow>What I make</Eyebrow>
+          <Eyebrow>What we make</Eyebrow>
           <h2 className="font-display text-5xl md:text-7xl leading-[0.95]">
             Websites that <em className="text-webster">move.</em>
             <br />
@@ -329,7 +329,7 @@ export const Services = () => (
       {/* brands */}
       <div className="mt-12">
         <Reveal>
-          <Eyebrow>Brands I've had the pleasure of working with</Eyebrow>
+          <Eyebrow>Brands our founder has had the pleasure of working with</Eyebrow>
         </Reveal>
         <Reveal delay={0.1}>
           <ul className="flex flex-wrap gap-x-6 gap-y-2 font-display text-2xl md:text-4xl leading-snug">
@@ -346,7 +346,7 @@ export const Services = () => (
       {/* magic wands */}
       <Reveal className="mt-8">
         <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 border-t border-black/10 pt-6">
-          <span className="font-display italic text-2xl shrink-0">My magic wands</span>
+          <span className="font-display italic text-2xl shrink-0">Our magic wands</span>
           <ul className="flex flex-wrap gap-2">
             {TOOLS.map((t) => (
               <li key={t} className="text-xs px-3 py-1.5 rounded-full border border-black/15 text-black/70">
