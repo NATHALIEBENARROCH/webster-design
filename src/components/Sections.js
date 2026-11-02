@@ -191,9 +191,9 @@ export const Mission = () => {
         </Reveal>
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            ["Bold", "Every site is drawn for one brand, one voice, one story, with one strong, impactful visual message."],
+            ["Bold", "Every project has a bold, distinctive identity and one strong, impactful visual message."],
             ["Beautiful", "A fashion-trained eye on every pixel and every transition, and a writer's flair for every word."],
-            ["Animated", "Layered motion adds depth, turns a scroll into a journey through your story, and keeps visitors on the page longer. It's what makes a brand feel crafted and premium."],
+            ["Animated", "Layered motion adds depth, turns a scroll into a journey through your story, and keeps visitors on the page longer."],
             ["Stories", "Every brand has a soul. I find its story and tell it in words and images people remember, so the brand is seen, understood and loved."],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={0.15 * i}>
