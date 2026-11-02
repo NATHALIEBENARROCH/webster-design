@@ -5,21 +5,40 @@ import { motion } from "framer-motion";
 // the bottom left), and puffy dotted arcs join them into one closed loop.
 const CLOUD_W = 600;
 const CLOUD_H = 260;
-const CLOUD_STARS = [
-  [95, 228], [55, 188], [82, 140], [148, 112], [212, 74], [296, 56],
-  [382, 70], [448, 104], [514, 134], [548, 186], [508, 228], [300, 232],
-].map(([x, y]) => ({ x, y, delay: 12.5 + Math.random() * 2 }));
+// The cloud outline, clockwise from the bottom left: each lobe runs from one
+// point to the next and puffs outward (big = more than a half circle).
+// Stars sit where the lobes meet, plus one on top of each big puff.
+const CLOUD_LOBES = [
+  { from: [120, 228], to: [70, 165], r: 44, big: true },
+  { from: [70, 165], to: [170, 110], r: 62, big: true, star: true },
+  { from: [170, 110], to: [300, 95], r: 70, big: true, star: true },
+  { from: [300, 95], to: [420, 110], r: 64, big: true, star: true },
+  { from: [420, 110], to: [515, 165], r: 60, big: true, star: true },
+  { from: [515, 165], to: [480, 228], r: 40, big: true },
+  { from: [480, 228], to: [300, 236], r: 150, big: false },
+  { from: [300, 236], to: [120, 228], r: 150, big: false },
+];
 
-// Each pair of stars is joined by a round bump (a half circle) that puffs
-// outward, so the outline is scalloped like a cartoon cloud. The long base
-// segments get a gentle curve instead, for a soft flat bottom.
-const CLOUD_ARCS = CLOUD_STARS.map((a, i) => {
-  const b = CLOUD_STARS[(i + 1) % CLOUD_STARS.length]; // last joins the first
-  const seg = Math.hypot(b.x - a.x, b.y - a.y);
-  const isBase = a.y > 215 && b.y > 215;
-  const r = isBase ? seg * 1.6 : seg / 2;
-  return `M ${a.x} ${a.y} A ${r} ${r} 0 0 1 ${b.x} ${b.y}`;
-});
+const CLOUD_ARCS = CLOUD_LOBES.map(
+  ({ from, to, r, big }) =>
+    `M ${from[0]} ${from[1]} A ${r} ${r} 0 ${big ? 1 : 0} 1 ${to[0]} ${to[1]}`
+);
+
+// top of a lobe: step out from the chord's middle, away from the cloud
+const lobePeak = ({ from, to, r }) => {
+  const dx = to[0] - from[0];
+  const dy = to[1] - from[1];
+  const c = Math.hypot(dx, dy);
+  const nx = dy / c; // outward normal (left of travel, screen coords)
+  const ny = -dx / c;
+  const h = Math.sqrt(r * r - (c / 2) ** 2) + r;
+  return [(from[0] + to[0]) / 2 + nx * h, (from[1] + to[1]) / 2 + ny * h];
+};
+
+const CLOUD_STARS = [
+  ...CLOUD_LOBES.map((l) => l.from),
+  ...CLOUD_LOBES.filter((l) => l.star).map(lobePeak),
+].map(([x, y]) => ({ x, y, delay: 12.5 + Math.random() * 2 }));
 
 const STAR_POINTS = "12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9 12 2";
 
