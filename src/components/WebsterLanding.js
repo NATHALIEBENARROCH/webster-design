@@ -1,13 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// ⭐ Generate consistent star config shared between top and bottom
-const STAR_CONFIGS = Array.from({ length: 12 }).map(() => ({
+// ⭐ Stars for the "connect the stars" constellation: one per column so they
+// spread across the whole width, at varied heights for an open, airy shape.
+const STAR_CONFIGS = Array.from({ length: 12 }).map((_, i) => ({
   delay: 6.5 + Math.random() * 2,
-  left: Math.random() * 100,
-  top: 72 + Math.random() * 192,
-  // top-of-page stars sit below the logo + tagline so they never overlap it
-  heroTop: 125 + Math.random() * 60,
+  left: 4 + i * (92 / 11) + (Math.random() - 0.5) * 3,
+  top: 30 + Math.random() * 190,
 }));
 
 // ⭐ Stars under the logo: spread evenly across the width (one per column),
@@ -30,18 +29,15 @@ const HERO_STARS = Array.from({ length: HERO_STAR_COUNT }).flatMap((_, i) => {
   return [star, twin];
 });
 
-// ✦ Constellation lines for the bottom stars: walk the stars left to right,
-// joining each to its neighbour, plus a few cross links that make triangles.
-const ORDER = STAR_CONFIGS.map((s, i) => i).sort(
-  (a, b) => STAR_CONFIGS[a].left - STAR_CONFIGS[b].left
-);
-const STAR_LINKS = [
-  ...ORDER.slice(0, -1).map((a, k) => [a, ORDER[k + 1]]),
-  ...ORDER.filter((_, k) => k % 3 === 0 && k + 2 < ORDER.length).map((a) => [
-    a,
-    ORDER[ORDER.indexOf(a) + 2],
-  ]),
-];
+// ☁ Cloud-like connections: each star joins its neighbour with a soft arc
+// that billows upward, like the bumps on a cloud outline.
+const CLOUD_ARCS = STAR_CONFIGS.slice(0, -1).map((a, i) => {
+  const b = STAR_CONFIGS[i + 1];
+  const mx = (a.left + b.left) / 2;
+  const lift = 28 + Math.random() * 30;
+  const my = Math.min(a.top, b.top) - lift;
+  return `M ${a.left} ${a.top} Q ${mx} ${my} ${b.left} ${b.top}`;
+});
 
 // ⭐️ Floating Star Animation
 const Star = ({ delay, left, top }) => (
@@ -171,20 +167,26 @@ const WebsterLanding = () => {
         </motion.div>
 
         <div className="relative w-full h-64 -mt-16 z-[30]">
-          <svg className="absolute inset-0 w-full h-full overflow-visible z-10" aria-hidden="true">
-            {STAR_LINKS.map(([a, b], i) => (
-              <motion.line
-                key={`link-${i}`}
-                x1={`${STAR_CONFIGS[a].left}%`}
-                y1={STAR_CONFIGS[a].top}
-                x2={`${STAR_CONFIGS[b].left}%`}
-                y2={STAR_CONFIGS[b].top}
+          <svg
+            className="absolute inset-0 w-full h-full overflow-visible z-10"
+            viewBox="0 0 100 256"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            {CLOUD_ARCS.map((d, i) => (
+              <motion.path
+                key={`arc-${i}`}
+                d={d}
+                fill="none"
                 stroke="black"
-                strokeWidth="2"
-                strokeDasharray="4 5"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 1 }}
-                transition={{ delay: 14.8 + i * 0.25, duration: 0.7, ease: "easeInOut" }}
+                strokeOpacity="0.55"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+                strokeDasharray="1 7"
+                vectorEffect="non-scaling-stroke"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 14.8 + i * 0.3, duration: 0.9, ease: "easeOut" }}
               />
             ))}
           </svg>
