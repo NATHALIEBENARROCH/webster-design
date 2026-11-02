@@ -7,7 +7,7 @@ const STAR_CONFIGS = Array.from({ length: 12 }).map(() => ({
   left: Math.random() * 100,
   top: 72 + Math.random() * 192,
   // top-of-page stars sit below the logo + tagline so they never overlap it
-  heroTop: 230 + Math.random() * 110,
+  heroTop: 125 + Math.random() * 60,
 }));
 
 // ⭐️ Floating Star Animation
@@ -132,7 +132,7 @@ const WebsterLanding = () => {
 
       <LogoExplosion />
 
-      <div className="relative z-[40] flex flex-col justify-start items-start min-h-screen px-8 pt-[35vh] text-left">
+      <div className="relative z-[40] flex flex-col justify-start items-start min-h-screen px-8 pt-[210px] md:pt-[230px] text-left">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
