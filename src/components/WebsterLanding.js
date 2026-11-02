@@ -10,6 +10,26 @@ const STAR_CONFIGS = Array.from({ length: 12 }).map(() => ({
   heroTop: 125 + Math.random() * 60,
 }));
 
+// ⭐ Stars under the logo: spread evenly across the width (one per column),
+// with a few "double stars" — a twin tucked right next to its partner.
+const HERO_STAR_COUNT = 22;
+const HERO_STARS = Array.from({ length: HERO_STAR_COUNT }).flatMap((_, i) => {
+  const col = 95 / HERO_STAR_COUNT;
+  const star = {
+    delay: 6.5 + Math.random() * 2,
+    left: 1 + i * col + Math.random() * col * 0.7,
+    top: 125 + Math.random() * 95,
+  };
+  const isDouble = i % 5 === 2; // about every fifth star gets a twin
+  if (!isDouble) return [star];
+  const twin = {
+    delay: star.delay + 0.3,
+    left: star.left + 0.6 + Math.random() * 0.6,
+    top: star.top + (Math.random() > 0.5 ? 10 : -10) + Math.random() * 8,
+  };
+  return [star, twin];
+});
+
 // ⭐️ Floating Star Animation
 const Star = ({ delay, left, top }) => (
   <motion.svg
@@ -37,7 +57,7 @@ const CloudSweep = () => (
     className="absolute top-0 left-0 w-[600px] h-auto z-30 pointer-events-none"
     initial={{ x: 600 }}
     animate={{ x: -600 }}
-    transition={{ duration: 6, ease: "easeInOut" }}
+    transition={{ duration: 7, ease: "easeInOut" }}
   />
 );
 
@@ -121,12 +141,12 @@ const WebsterLanding = () => {
 
       <CloudSweep />
 
-      {STAR_CONFIGS.map((star, i) => (
+      {HERO_STARS.map((star, i) => (
         <Star
           key={`top-star-${i}`}
           delay={star.delay}
           left={star.left}
-          top={star.heroTop}
+          top={star.top}
         />
       ))}
 
