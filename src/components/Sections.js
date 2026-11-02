@@ -194,7 +194,7 @@ export const Mission = () => {
             ["Bold", "Every project has a bold, distinctive identity and one strong, impactful visual message."],
             ["Beautiful", "A fashion-trained eye on every pixel and every transition, and a writer's flair for every word."],
             ["Animated", "Layered motion adds depth, turns a scroll into a journey through your story, and keeps visitors on the page longer."],
-            ["Stories", "Every brand has a soul. I find its story and tell it in words and images people remember, so the brand is seen, understood and loved."],
+            ["Stories", "Every brand has a soul and a story to tell, in words and images, so the brand is seen, understood, loved and remembered."],
           ].map(([t, d], i) => (
             <Reveal key={t} delay={0.15 * i}>
               <div className="border-t border-white/30 pt-6">
