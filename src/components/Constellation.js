@@ -88,10 +88,13 @@ const Constellation = () => {
           >
             <p className="text-xs tracking-[0.3em] uppercase text-webster mb-3">The work</p>
             <h2 className="font-display text-4xl md:text-6xl leading-[1.05]">
-              Every star is a <em>story.</em>
+              We are The Websters.
               <br />
-              Pick one and wander in.
+              The Web is our <em className="text-webster">universe.</em>
             </h2>
+            <p className="mt-3 font-display italic text-2xl md:text-3xl text-black/70">
+              Every star is a story. Pick one and wander in.
+            </p>
           </motion.div>
           <motion.p
             className="max-w-xs text-black/60 text-sm leading-relaxed"
