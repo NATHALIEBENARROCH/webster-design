@@ -5,23 +5,20 @@ import { motion } from "framer-motion";
 // the bottom left), and puffy dotted arcs join them into one closed loop.
 const CLOUD_W = 600;
 const CLOUD_H = 260;
-const CLOUD_CENTER = { x: 300, y: 160 };
 const CLOUD_STARS = [
-  [105, 222], [58, 168], [100, 112], [178, 76], [270, 42], [365, 52],
-  [440, 84], [515, 118], [548, 178], [478, 226], [370, 234], [240, 232],
+  [95, 228], [55, 188], [82, 140], [148, 112], [212, 74], [296, 56],
+  [382, 70], [448, 104], [514, 134], [548, 186], [508, 228], [300, 232],
 ].map(([x, y]) => ({ x, y, delay: 12.5 + Math.random() * 2 }));
 
+// Each pair of stars is joined by a round bump (a half circle) that puffs
+// outward, so the outline is scalloped like a cartoon cloud. The long base
+// segments get a gentle curve instead, for a soft flat bottom.
 const CLOUD_ARCS = CLOUD_STARS.map((a, i) => {
   const b = CLOUD_STARS[(i + 1) % CLOUD_STARS.length]; // last joins the first
-  const mx = (a.x + b.x) / 2;
-  const my = (a.y + b.y) / 2;
-  const dx = mx - CLOUD_CENTER.x;
-  const dy = my - CLOUD_CENTER.y;
-  const len = Math.hypot(dx, dy) || 1;
   const seg = Math.hypot(b.x - a.x, b.y - a.y);
-  const isBottom = a.y > 200 && b.y > 200;
-  const bulge = seg * (isBottom ? 0.12 : 0.55); // flat base, puffy top
-  return `M ${a.x} ${a.y} Q ${mx + (dx / len) * bulge} ${my + (dy / len) * bulge} ${b.x} ${b.y}`;
+  const isBase = a.y > 215 && b.y > 215;
+  const r = isBase ? seg * 1.6 : seg / 2;
+  return `M ${a.x} ${a.y} A ${r} ${r} 0 0 1 ${b.x} ${b.y}`;
 });
 
 const STAR_POINTS = "12 2 15 9 22 9 17 14 19 21 12 17 5 21 7 14 2 9 9 9 12 2";
